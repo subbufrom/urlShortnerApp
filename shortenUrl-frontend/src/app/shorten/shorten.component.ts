@@ -15,15 +15,22 @@ export class ShortenComponent {
   ) { }
   resultData;
   createUrl(id:String) {
-    this.todoService.sendData(id).toPromise()
-    .then(response => {
-      let value = JSON.stringify(response);
-      let shortUrl = JSON.parse(value).url;
-      this.resultData = shortUrl;
+    let value = JSON.stringify(id);
+    let shortUrl = JSON.parse(value).url;
+    if(!shortUrl) {
+      this.resultData = "Please enter the url...."
       this.isavailable = true;
-    }).catch(errors => {
-      console.log(errors);
-    });
+    } else {
+      this.todoService.sendData(id).toPromise()
+      .then(response => {
+        let value = JSON.stringify(response);
+        let shortUrl = JSON.parse(value).url;
+        this.resultData = shortUrl;
+        this.isavailable = true;
+      }).catch(errors => {
+        console.log(errors);
+      });
+    }
   }
 
   copyToClipboard(element) {

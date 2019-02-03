@@ -28,7 +28,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ClipboardModule,
     MatTableModule,
-    RouterModule.forRoot([{
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: ShortenComponent
+      },
+      {
         path: 'search',
         component: ShortenComponent
       },
