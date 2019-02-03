@@ -1,0 +1,24 @@
+<div class="mat-elevation-z8">
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="shorUrl">
+      <th mat-header-cell *matHeaderCellDef> ShortUrl </th>
+      <td mat-cell *matCellDef="let element"> localhost:8080/{{element.shorUrl}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="originalUrl">
+        <th mat-header-cell *matHeaderCellDef> originalUrl </th>
+        <td mat-cell *matCellDef="let element"> {{element.originalUrl}} </td>
+      </ng-container>
+  
+    <ng-container matColumnDef="hits">
+      <th mat-header-cell *matHeaderCellDef> Number of hits </th>
+      <td mat-cell *matCellDef="let element"> {{element.hits}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+  
